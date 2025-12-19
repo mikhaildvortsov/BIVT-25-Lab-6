@@ -406,6 +406,20 @@ namespace Lab6
             }
         }
         
+        public void SortAscending(int[] array)
+        {
+            for (int i = 0; i < array.Length; i++)
+            {
+                for (int j = 0; j < array.Length - i - 1; j++)
+                {
+                    if (array[j] > array[j + 1])
+                    {
+                        (array[j], array[j + 1]) = (array[j + 1], array[j]);
+                    }
+                }
+            }
+        }
+        
         public delegate void Sort();
         
         public double Task10(int[][] array, Func<int[][], double> func)
@@ -460,7 +474,7 @@ namespace Lab6
                 }
             }
 
-            arrayAll = SortAscending(arrayAll);
+            SortAscending(arrayAll);
 
             double med;
             if (arrayAll.Length % 2 != 0)
@@ -476,22 +490,6 @@ namespace Lab6
             }
 
             return med;
-        }
-
-        public static int[] SortAscending(int[] array)
-        {
-            for (int i = 0; i < array.Length; i++)
-            {
-                for (int j = 0; j < array.Length - 1 - i; j++)
-                {
-                    if (array[j] > array[j + 1])
-                    {
-                        (array[j], array[j + 1]) = (array[j + 1], array[j]);
-                    }
-                }
-            }
-
-            return array;
         }
 
         public double CountLargeElements(int[][] array)
